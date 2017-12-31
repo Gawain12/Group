@@ -18,7 +18,7 @@
        default-autowire="byName" default-lazy-init="true">
        
 	<!--排除所有的action-->
-    <context:component-scan base-package="blog">
+    <context:component-scan base-package="group">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 	
@@ -57,7 +57,7 @@
 		<!-- hibernate 映射文件 -->
 		<property name="packagesToScan">
 			<list>
-				<value>blog.entity</value>
+				<value>group.entity</value>
 			</list>
 		</property>
 	</bean>	

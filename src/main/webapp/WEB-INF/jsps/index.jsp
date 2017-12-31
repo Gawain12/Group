@@ -21,7 +21,7 @@
 		<frame scrolling="auto" noresize="" border="0" name="mainFrame" src="main.jsp"></frame>
 	</frameset>
 <!--bottom样式-->
-	<frame src="bottom" name="bottomFrame" scrolling="No" noresize="noresize" id="bottomFrame" title="bottomFrame" />
+	<frame src="bottom.jsp" name="bottomFrame" scrolling="No" noresize="noresize" id="bottomFrame" title="bottomFrame" />
 </frameset><noframes></noframes>
 <!--不可以删除-->
 </html>

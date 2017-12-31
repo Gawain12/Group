@@ -58,37 +58,51 @@ SCROLLBAR-TRACK-COLOR:#BED8EB;
 
 }
 body{ 
-     background-image:url("img/login.jpg");
+     background-image:url("style/images/main/14.jpg");
      background-size:cover;
      background-attachment:fixed;
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>airticle</title>
 </head>
 <body>
-<div id="tab-5" class="tab">
-						<article>
-							<div class="text-section">
-								<h1>Create Article</h1>
-						                                            
-                        
-					<div class="tm-content-box tm-gray-bg tm-services">
-                    <div class="tm-welcome-link tm-button">
-                    <h1 style="color:white">发表文章</h1>
-                    </div>
-                    <br/>
-                    <form name="articleFrom" action="ArticleAddServlet" method="post">
-		                                         文章标题：<input name="title" type="text" style="width:35%;margin-right:15px"></input>
-		          
-		                                       <br/>  文章内容：<textarea rows="10" cols="30" name="content"style="width:95%;height:200px;margin-right:100px"></textarea><br/>
-	            <input type="submit" value="发表"  id="article"/>
-	            </form> 
-                    </div>
-                        
-           
+<p>Create Article</p>
+	<div class="main">
 
-						</article>
-					</div>
+			<form action="doSave" method="post">
+				<table class="insert-tab">
+						<tbody>
+								<div class="main">
+								<tr class="tr">
+								<th><i class="require-red">*</i>分类：</th>
+								<td>
+									<select class="catid" name="articletype">
+										<c:forEach items="${typeList}" var="a">
+											<option value="${a.id}">${a.type}</option>
+										</c:forEach>
+								</select></td>
+
+							</tr>
+							<tr class="tr">
+								    文章标题：<input name="title" type="text" style="width:35%;margin-right:15px">${article.title}</input>
+							</tr>
+							<tr class="tr">
+							<br/>  文章内容：<textarea rows="10" cols="30" name="content"style="width:95%;height:200px;margin-right:100px">
+		                                      ${article.content} </textarea>
+		                     <br/>
+		                     </tr>
+		                         <tr class="tr">
+								<td><input class="article-btn-push" value="发布"
+									type="submit"> <input class="article-btn-back"
+									onclick="history.go(-1)" value="返回" type="button"></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
 </body>
+<script src="<c:url value="/style/js/jquery-1.8.3.min.js"/>"></script>
+	<script src="<c:url value="/style/js/menu.js"/>"></script>
+
 </html>

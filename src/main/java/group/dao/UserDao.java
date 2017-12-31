@@ -1,0 +1,13 @@
+package group.dao;
+
+import group.entity.User;
+
+public interface UserDao extends BaseDao<User>{
+
+	User login(User user);
+	User findUser(int i);
+	User findByName(String userName);
+	void updateUser(User user);
+	void updateUserPassword(User user);
+
+}

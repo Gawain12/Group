@@ -47,7 +47,7 @@ a{
       text-decoration:none;
 }
 body {
-     background-image:url("img/login.jpg");
+     background-image:url("style/images/main/14.jpg");
       background-size:cover;
       background-attachment:fixed;
 }
@@ -58,13 +58,14 @@ body {
 <body>
       <center>
           <h1 class="head">注册</h1>
-             <form action='RegisterServlet?' method="post"  onsubmit="return check()">
+             <form action="<c:url value="/doRegister" />"  method="post"  onsubmit="return check()">
                       <input type='text' name='email' id="email" size="30" placeholder="邮箱地址:"><br>
                       <input type='text' name='phone' id="phone" size="30" placeholder="手机号码:"><br>
                       <input type='text' name='username' id="username" size="30" placeholder="昵称："><br>
                       <input type='password' name='password' id="password" size="30" placeholder="密码："><br>
                       <button type='submit'>确定</button><br>   
-                      <font size="2"><a href='login.jsp'>返回上层</a></font>        
+                      <font size="2">
+                      <a href="<c:url value="login"/>">返回上层</a></font>        
              </form>
       </center>  
  
@@ -75,14 +76,13 @@ function check(){  //表单提交则验证开始
     var phone = false;
     var username = false;
     var passwor = false;
-    var conpasswor = false;
      
     if(checkEmail(document.getElementById("email").value)){ emai = true; }  
     if(checkphoner(document.getElementById("phone").value)){ phone = true; }
     if(checkUsername(document.getElementById("username").value)){ username = true; }
     if(checkPassword(document.getElementById("password").value)){ password = true; }
     if(checkConpassword(document.getElementById("password").value,document.getElementById("conpassword").value)){ conpasswor = true; }
-    if(emai && passwor && phone && usernam && conpasswor){ 
+    if(emai && passwor && phone && username ){ 
       return true;
     }
      alert("请将注册信息填写完整！"); 
@@ -100,13 +100,12 @@ function checkEmail(email){
 	 }
 function checkphoner(phone){
 	   var pattern=/^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/;  
-	   if(phoner == "" ){
+	   if(phone == "" ){
 	     return false;
 	   }else if(!pattern.test(phone)){
 		   alert("请输入正确的手机号码！"); 
 		   return false;
-	   }
-	   else return true; 
+	   } else return true; 
 	 }
 function checkUsername(username){ 
 	var pattern= /^[\u4e00-\u9fff\w]{1,16}$/;
@@ -128,16 +127,6 @@ function checkPassword(password){
 	   }
 	   else return true;
 	   
-	 }
-function checkConpassword(password,conpassword){ 
-	   if(conpassword == "" || password == "" ){
-	     return false;
-	   }else if(password != conpassword){
-		   alert("两次输入的密码不一致！");
-		   return false;
-	   }
-	   else
-		   return true;
 	 }
 </script>
 </body>

@@ -5,7 +5,7 @@
     <property name="sun.boot.library.path" value="F:\JAVA\develop\jre\bin"/>
     <property name="java.vm.version" value="25.102-b14"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="F:\Workplace\GOUP"/>
+    <property name="maven.multiModuleProjectDirectory" value="F:\Workplace\GROUP"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="F:\Workplace\GOUP"/>
+    <property name="user.dir" value="F:\Workplace\GROUP"/>
     <property name="java.runtime.version" value="1.8.0_102-b14"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="F:\JAVA\develop\jre\lib\endorsed"/>
@@ -27,7 +27,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 10"/>
-    <property name="classworlds.conf" value="F:\Workplace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf3352575815122002760.tmp"/>
+    <property name="classworlds.conf" value="F:\Workplace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf5579721850862476223.tmp"/>
     <property name="sun.jnu.encoding" value="GBK"/>
     <property name="java.library.path" value="F:\JAVA\develop\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;F:/JAVA/develop/bin/../jre/bin/server;F:/JAVA/develop/bin/../jre/bin;F:/JAVA/develop/bin/../jre/lib/amd64;F:\ARM\bin;C:\Program Files (x86)\ARM\ADSv1_2\bin;F:\JAVA\develop\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;F:\Python2.7;F:\Mysql\bin;F:\jee\apache-maven-3.5.2\bin;F:\bin;;C:\Users\谭凯元\AppData\Local\Microsoft\WindowsApps;E:\搜狐\搜狐影音\5.2.3.15;C:\Users\谭凯元\Desktop;;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -53,7 +53,7 @@
     <property name="java.ext.dirs" value="F:\JAVA\develop\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
     <property name="sun.boot.class.path" value="F:\JAVA\develop\jre\lib\resources.jar;F:\JAVA\develop\jre\lib\rt.jar;F:\JAVA\develop\jre\lib\sunrsasign.jar;F:\JAVA\develop\jre\lib\jsse.jar;F:\JAVA\develop\jre\lib\jce.jar;F:\JAVA\develop\jre\lib\charsets.jar;F:\JAVA\develop\jre\lib\jfr.jar;F:\JAVA\develop\jre\classes"/>
     <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="maven.home" value="F:\Workplace\GOUP\EMBEDDED"/>
+    <property name="maven.home" value="F:\Workplace\GROUP\EMBEDDED"/>
     <property name="file.separator" value="\"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
     <property name="sun.cpu.endian" value="little"/>

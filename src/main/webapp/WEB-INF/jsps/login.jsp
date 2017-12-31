@@ -103,7 +103,7 @@ a.a_code{
       text-decoration:none;
 }
 body{ 
-     background-image:url("style/images/login/14.jpg");
+     background-image:url("style/images/main/14.jpg");
      background-size:cover;
      background-attachment:fixed;
 }
@@ -116,13 +116,12 @@ body{
                 <h1 class="head" >TLGROUP</h1>
                 <form action="<c:url value="/doLogin"/>" method="post" onSubmit="return check()">
                     <div class="a">                                       
-	                    <p id="abc" 
-lass="head2" >用户登录</p><br>
+	                    <p id="abc" class="head2" >用户登录</p><br>
 	                    <input type='text' name='username' id="username"  placeholder="   用户名" /><br>
                     </div>
                     <input type='password' name='password' id="password"  placeholder="    密码"/><br/>
 				  
-                    <button type='submit'>登录</button><br>
+                    <button type='submit'  onclick="sub()">登录</button><br>
 	                
 	        
 	                <a class="c" href="<c:url value="/register"/>">注册</a>
@@ -134,53 +133,19 @@ lass="head2" >用户登录</p><br>
           
             
 <script>
-function getRememberCookie(){
-	xmlHttp=new XMLHttpRequest();
-	xmlHttp.onreadystatechange = function(){
-		 if (xmlHttp.readyState==4 && xmlHttp.status==200){
-			 var text = xmlHttp.responseText;
-			 var num = text.indexOf("&");
-		     var username = text.substring(0,num);
-		     var password = text.substring(num+1);
-		     if(username!="" && password==""){
-		    	 document.getElementById("rememberbox").checked=true;
-		     }
-		     if(username!="" && password!=""){
-		    	 document.getElementById("rememberbox2").checked=true;
-		     }
-			 document.getElementById("usernamer").value= username;
-			 document.getElementById("password").value= password;
-		 }
-	}
-	xmlHttp.open("GET","login?time="+Math.random(),true);   
-	xmlHttp.send(null);
-}
-
-function admins(){
-	if(document.getElementById("abc").innerHTML=="用户登录"){
-		document.getElementById("abc").innerHTML="管理员登录";
-		document.getElementById("usernamer").placeholder="    管理员账号";
-	}
-	else{
-		document.getElementById("abc").innerHTML="用户登录";
-		document.getElementById("usernamer").placeholder="    邮箱地址或手机号码";
-	}
-}
 
 function check(){  
-    var username = false;
-    var password = false;
-    var checkcod = false;
-    
-    if(checkusernamer(document.getElementById("usernamer").value)){ username = true; }  
-    if(checkPassword(document.getElementById("password").value)){ password = true; }
-    if(username && passwor){ 
+    var accountnumbe = false;
+    var passwor = false;
+    if(checkAccountnumber(document.getElementById("username").value)){ accountnumbe = true; }  
+    if(checkPassword(document.getElementById("password").value)){ passwor = true; }
+    if(accountnumbe && passwor && checkcod){ 
       return true;
     }
     	return false; 
   }
   
-function checkusername(username){ 
+function checkAccountnumber(username){ 
 	   if(username != ""){
 	     return true;
 	   }else{
@@ -196,8 +161,6 @@ function checkPassword(password){
 		   return false;
 	   }
 	 }
-
-
 </script>
 </body>
 </html>           
