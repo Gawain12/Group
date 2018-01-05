@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -11,23 +12,48 @@
 <style type="text/css">
 
 a{
-      font-size:15px;
+      font-size:18px;
       color:#fff;
       text-decoration:none;
 }
-
+h1{
+font-size:30px;
+      color:gray;
+      text-decoration:none;
 }
+
 span{
 font-size:15px;
       color:#fff;
       text-decoration:none;
 }
+textarea::-webkit-input-placeholder {
+      color: #fff;
+      font-size: 15px;
+}
+textarea{
+     width:220px;
+      height:50px;
+      margin-top:0px;
+      margin-bottom:20px;
+      padding-left:15px;
+      border-radius:4px;
+      outline:none;
+      border:1px solid #c8cccf;
+      font-size:25px; 
+      color:#6a6f77;     
+SCROLLBAR-DARKSHADOW-COLOR: #92C0D1; 
+
+SCROLLBAR-TRACK-COLOR:#BED8EB; 
+
+
+}
 time{
 font-size:10px;
-color:gray;
+color:green;
 }
 body{ 
-     background-image:url("style/images/main/14.jpg");
+     background-image:url("${pageContext.request.contextPath}/style/images/main/14.jpg");
      background-size:cover;
      background-attachment:fixed;
 }
@@ -40,24 +66,28 @@ body{
  
     <section class="main">
         <article class="article">
-            <h1 class="article_title"> ${article.title}</h1>
+            <h1 class="article_title" align="center"> ${article.title}</h1>
             <div class="article-content">
-                <p>${article.content}</p>
+                    <div id="services" class="tm-content-box tm-gray-bg tm-services">
+                <content>${article.content}</content>
+                </div>
             </div>
         </article>
         <!--end article-->
-        <form  onSubmit="renderReply(data)">
+        
+			<form action="reply" method="post">
         <div class="publish-comment">
             <div class="comment-text">
             	<input type="hidden" name="article_id" value="${article.id}" id="article_id">
-                <textarea placeholder="谈谈想法" class="js-textarea" id="js-textarea"></textarea>
+                <textarea placeholder="谈谈" class="content" id="content"></textarea>
                 <div class="comment-push clearfix">
                     <input type="submit" class="comment-btn" id="comment-btn" value="发表评论">
                 </div>
             </div>
         </div>
-        </form>
+           </form>
         <div id="commentList">
+     
         <c:choose>
 				<c:when test="${listReply.size()==0 }">
 						暂无评论
@@ -74,8 +104,8 @@ body{
         <!-- End main_content-->
     </section>
     <!-- End main  -->
-    <script src="<c:url value="style/js/jquery-1.8.3.min.js"/>"></script>
-	<script src="<c:url value="style/js/main.js"/>"></script>
+    <script src="<c:url value="${pageContext.request.contextPath}/style/js/jquery-1.8.3.min.js"/>"></script>
+	<script src="<c:url value="${pageContext.request.contextPath}/style/js/main.js"/>"></script>
 	<script type="text/javascript">
 		function renderReply(data){
 			 var html = '';
@@ -83,7 +113,7 @@ body{
 		     $('#commentList').prepend(html);
 		}
 		$('#comment-btn').on('click',function(){
-			
+			alert("sfsfsfsff");
 		  	$.ajax({  
 		  	    type : 'GET',  
 		  	    contentType : 'application/json',  
@@ -102,6 +132,8 @@ body{
 		  	    }  
 		  	  });
 		});
+		
+		
 	</script>
 </body>
 </html>

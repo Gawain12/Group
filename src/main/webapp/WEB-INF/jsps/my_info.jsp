@@ -108,7 +108,7 @@ body {
           MyInfo
         
              <form action='loginOut'>
-	               <button class="loginOut" type='submit'>注销</button>
+	               <button class="signOut" type='submit'>注销</button>
 	      </form>
 	                   
 	          
@@ -119,7 +119,7 @@ body {
 	      <div class="nav1">
 		      <center>  
 		             <br><br>
-                       <form name="userFrom" action="UserUpdate" method="post">
+                       <form name="userFrom" action="updateUser" method="post">
 		                  <table>		                         					          					                                           
 				                 <tr>
 					                  <td> 昵 称:</td>

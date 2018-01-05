@@ -25,7 +25,7 @@ public class Article extends BaseEntity {
     private String content;
     
     @Basic
-    @Column(name = "pub_date", nullable = false)
+    @Column(name = "pub_date")
     private Date pubDate;
     
     @ManyToOne
@@ -33,7 +33,7 @@ public class Article extends BaseEntity {
     private ArticleType articletype;
     
     @ManyToOne
-    @JoinColumn(name = "userid",referencedColumnName = "userid")
+    @JoinColumn(name = "user_userid",referencedColumnName = "userid")
     private User user;
 
 

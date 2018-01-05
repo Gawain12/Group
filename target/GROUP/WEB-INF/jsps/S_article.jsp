@@ -46,7 +46,7 @@ body{
             </div>
         </article>
         <!--end article-->
-        <form action="/articleShow/reply" method="post" onSubmit="renderReply(data)">
+        <form  onSubmit="renderReply(data)">
         <div class="publish-comment">
             <div class="comment-text">
             	<input type="hidden" name="article_id" value="${article.id}" id="article_id">

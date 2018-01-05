@@ -64,10 +64,10 @@ body{
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>airticle</title>
+<title>编辑文章</title>
 </head>
 <body>
-<p>Create Article</p>
+<p>Update Article</p>
 	<div class="main">
 
 			<form action="doSave" method="post">

@@ -20,12 +20,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
+
 import group.entity.Article;
 import group.entity.ArticleType;
+import group.entity.Authority;
+import group.entity.Group;
 import group.entity.Reply;
 import group.entity.User;
 import group.service.ArticleService;
 import group.service.ArticleTypeService;
+import group.service.AuthorityService;
 import group.service.ReplyService;
 import group.service.UserService;
 import group.util.PageBean;
@@ -38,6 +43,8 @@ public class ArticleController {
 	private ArticleTypeService articleTypeService;
 	@Resource
 	private ReplyService replyService;
+	@Resource
+	private AuthorityService authorityService;
 	
 	/**
 	 * 分页查询所有文章
@@ -46,6 +53,25 @@ public class ArticleController {
 	 * @return
 	 */
 	@RequestMapping(value = "/doMarticle")
+	public String findMyArticle(@RequestParam int currPage,HttpServletRequest req,Model model){ //
+		if(currPage<1){
+		   	currPage = 1;
+		}
+		// 查询当前展示页所有信息
+
+		User loginUser = (User) req.getSession().getAttribute("username");
+
+		List<Article> listArticle = articleService.findByUserid(loginUser.getUserid());
+		//PageBean<Article> listArticle = articleService.findAll(currPage);
+		// 查询所有分类
+		List<ArticleType> typeList = articleTypeService.findAllType();
+		// 值存储，绑定到request上
+		model.addAttribute("listArticle", listArticle);
+		model.addAttribute("typeList", typeList);
+		 //System.out.println(listArticle.getCurrPage()+":"+listArticle.getTotalCount()+":"+listArticle.getList().get(0).getContent());
+		return "/m_article";
+	}
+	@RequestMapping(value = "/doAarticle")
 	public String findAllArticle(@RequestParam int currPage,Model model){ //
 		if(currPage<1){
 		   	currPage = 1;
@@ -57,9 +83,11 @@ public class ArticleController {
 		// 值存储，绑定到request上
 		model.addAttribute("listArticle", listArticle);
 		model.addAttribute("typeList", typeList);
-		 System.out.println(listArticle.getCurrPage()+":"+listArticle.getTotalCount()+":"+listArticle.getList().get(0).getContent());
-		return "/m_article";
+		System.out.println(listArticle.getCurrPage()+":"+listArticle.getTotalCount()+":"+listArticle.getList().get(0).getContent());
+		return "/A_article";
 	}
+
+
 	/**
 	 * 跳转到编辑文章页面
 	 * @param article_id url后面的参数
@@ -70,19 +98,35 @@ public class ArticleController {
 		// 根据文章id查询
 		Article article = articleService.findById(article_id);
 		map.put("article",article);
-		map.put("articletype", article.getArticleType());
+		//map.put("articletype", article.getArticleType());
 		System.out.println("文章类别id:"+article.getArticleType().getId());
 		// 查询所有文章分类
 		List<ArticleType> typeList = articleTypeService.findAllType();
 		map.put("typeList",typeList);
-		return "/c_article";
+		return "/U_article";
 	}
-	
+	/*
+@RequestMapping(value = "/wArticle", method = RequestMethod.POST)
+    
+    public String addArticle(Article article ,HttpServletRequest request){
+        try {  
+        	
+            int userid = Integer.valueOf(request.getParameter("user_userid"));  
+            System.out.println(userid); 
+        	
+            articleService.addArticle(article, userid); 
+            return "redirect:/c_article";  
+        } catch (Exception e) {  
+            return "error";  
+        }    
+    }
+    */
 	/**
 	 * modelAttribute方法会在springmvc controller执行之前执行
 	 * @param id
 	 * @param map
 	 */
+	
 	@ModelAttribute  
 	public void getArticle(@RequestParam(value="id",required=false) Integer id,   
 	        Map<String, Object> map){  
@@ -102,14 +146,14 @@ public class ArticleController {
 	 * @return
 	 */
 	@RequestMapping(value = "/doUpdate", method = RequestMethod.POST)
-	public String updateArticle(Article article,@RequestParam int articletype){
+	public String updateArticle(Article at){
 		// 获取更新后的select值articletype
-		System.out.println("typeId:"+articletype);
-		// 更新select值
-		article.getArticleType().setId(articletype);
-		System.out.println("title:"+article.getTitle());
-		// 更新article
-		articleService.update(article);
+		/*Article u = articleService.findById(id);
+		u.setContent(article.getContent());
+		u.setTitle(article.getTitle());
+		u.setArticleType(article.getArticleType());
+		*/
+		articleService.update(at);
 		return "redirect:doMarticle?currPage=1";
 	}
 	/**
@@ -133,20 +177,52 @@ public class ArticleController {
      * @return
      */
     @RequestMapping(value = "/doSave", method = RequestMethod.POST)
-    public String save(Article article,@RequestParam int articletype, Object req){
+    public String save(Article article,@RequestParam int articletype, Object req,HttpServletRequest request){
     	// 获取当前时间
+    	try { 
     	java.util.Date nDate = new java.util.Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String sDate = sdf.format(nDate);
         java.sql.Date now = java.sql.Date.valueOf(sDate);
+        
+        //int userid = Integer.valueOf(request.getParameter("user_userid"));  
+        //System.out.println(userid); 
 
+		User loginUser = (User) request.getSession().getAttribute("username");
+
+        
         ArticleType at = articleTypeService.findById(articletype);
     	article.setPubDate(now);
     	article.setArticleType(at);
-    	articleService.save(article);
+    	articleService.addArticle(article,loginUser.getUserid()); 
+   // 	articleService.save(article);
     	return "redirect:doMarticle?currPage=1";
+      } catch (Exception e) {  
+          return "/Error";  
+       }   
     }
+ @RequestMapping(value = "/check", method = RequestMethod.GET)
     
+    public String getUserArticleCheck(@RequestParam int article_id, Model model, HttpServletRequest request,ModelMap map){
+    	System.out.println("所查文章的ID:" +article_id);
+		User loginUser = (User) request.getSession().getAttribute("username");
+    	int user_userid = loginUser.getUserid();
+    	System.out.println("当前用户的ID:" +user_userid);
+		Authority curAuthority =authorityService.Check(article_id, user_userid);
+    	if(curAuthority == null)
+    	{
+    		return "Arterror";
+    	}else 
+    	{
+    		List<Reply> listReply = replyService.findReply(article_id);
+      		
+      		// 值存储，绑定到request上
+      		map.put("listReply", listReply);
+        	model.addAttribute("article", articleService.findById(article_id));
+            return "/S_article";
+    	}
+
+    }
     /**
      * 异步請求article
      * @return
@@ -177,5 +253,6 @@ public class ArticleController {
   		System.out.println("articles請求成功");
   		return "/S_article";
   	}
+
 
 }

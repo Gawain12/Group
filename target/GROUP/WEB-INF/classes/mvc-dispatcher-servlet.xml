@@ -52,8 +52,8 @@
 	<!-- 配置LoginedInterceptor -->
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<mvc:exclude-mapping path="/login" />
+			<mvc:mapping path="/admin/**" />
+			<mvc:exclude-mapping path="/admin/login" />
 			<bean class="group.interceptor.LoginedInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>

@@ -46,32 +46,22 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <th align="center" valign="middle" class="borderright">文章标题</th>
         <th align="center" valign="middle">操作</th>
       </tr>
-	<c:forEach items="${listArticle.list}" var="a">
+      
+					<tbody id="deleteItem">
+	    <c:forEach items="${listArticle}" var="a">
 							<tr>
 								<td>${a.id}</td>
 								<td>${a.pubDate}</td>
 	<!--							<td>${a.articleType}</td> -->
 						<td><a href="articleShow/${a.id}">	${a.title}</a></td>
 								<td><a href="doPublish?article_id=${a.id}">编辑</a> 
-								<a href="doDelete?article_id=${a.id}" class="deleteItem">删除</a></td>
+								<a href="doDelete?article_id=${a.id}" class="deleteItem">删除</a>
+								
+								<a href="doDelete?article_id=${a.id}" >管理查看权限</a>
+								</td>
 							</tr>
 						</c:forEach>
-	 	<div class="list-page">
-					<c:if test="${listArticle.currPage!=1}">
-						<a href="doMarticle?currPage=1" class="prepage">首页</a>
-						<a href="doMarticle?currPage=${listArticle.currPage-1}"
-							class="prepage">上一页</a>
-					</c:if>
-					<c:if test="${listArticle.currPage!=listArticle.totalPage}">
-						<a href="doMarticle?currPage=${listArticle.currPage+1}"
-							class="nextpage">下一页</a>
-						<a href="doMarticle?currPage=${listArticle.totalPage }"
-							class="prepage">尾页</a>
-					</c:if>
-					<span class="pageCount">共${listArticle.totalCount}</span>条 <span
-						class="cuurPage">${listArticle.currPage}</span> / <span
-						class="pageCount">${listArticle.totalPage}</span>页
-				</div>
+	</tbody>
 
 	<script src="<c:url value="style/js/jquery-1.8.3.min.js"/>"></script>
 	<script src="<c:url value="style/js/menu.js"/>"></script>

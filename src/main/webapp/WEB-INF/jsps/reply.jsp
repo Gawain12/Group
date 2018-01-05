@@ -11,9 +11,9 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
 <!-- Custom Theme files -->
-<link rel="stylesheet" href="<c:url value="/style/css/reset.css"/>"
+<link rel="stylesheet" href="<c:url value="style/css/reset.css"/>"
 	type="text/css" />
-<link rel="stylesheet" href="<c:url value="/style/css/background.css"/>"
+<link rel="stylesheet" href="<c:url value="style/css/background.css"/>"
 	type="text/css">
 
 </head>
@@ -111,10 +111,10 @@
 		</div>
 	</section>
 	<footer id="footer">
-		<p>Copyright &copy; 2017 JUN. All Rights Reserved.</p>
+	
 	</footer>
-	<script src="<c:url value="/style/js/jquery-1.8.3.min.js"/>"></script>
-	<script src="<c:url value="/style/js/menu.js"/>"></script>
+	<script src="<c:url value="style/js/jquery-1.8.3.min.js"/>"></script>
+	<script src="<c:url value="style/js/menu.js"/>"></script>
 	<script>
     $(document).ready(function() {
     	// 删除时，显示提示框 

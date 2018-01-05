@@ -1,47 +1,63 @@
 package group.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+/**
+ * 鏂囩珷瀹炰綋绫�
+ * @author hope
+ *
+ */
 @Entity
 @Table(name = "t_group", schema = "group", catalog = "")
-public class Group {
-	private static final long serialVersionUID = -2544170046153290639L;
+public class Group extends BaseEntity {
+	private static final long serialVersionUID = 4968250252502230187L;
 	
-	private int groupid;
-	private String groupname;
-	private String username;
+    @Id
+    @GeneratedValue
+    @Column(name = "id", nullable = false)
+	private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_userid",referencedColumnName = "userid")
+    private User user;
+    @Basic
+    @Column(name = "name", nullable = false, unique = true, length = 45)
+
+    private String name;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 	
-	 @Id
-	 @GeneratedValue
-	 @Column(name = "groupid", nullable = false)
-	 public int getGroupid() {
-			return groupid;
-		}
-		public void setGroupid(int groupid) {
-			this.groupid = groupid;
-		}
-		@Basic
-	    @Column(name = "groupname", nullable = false, unique = true, length = 45)
-		public String getGroupname() {
-			return groupname;
-		}
-		public void setGroupname(String groupname) {
-			this.groupname = groupname;
-		}
-		@Basic
-	    @Column(name = "username", nullable = false, unique = true, length = 45)
-		public String getUsername() {
-			return username;
-		}
-		public void setUsername(String username) {
-			this.username = username;
-		}
-		/*public static long getSerialversionuid() {
-			return serialVersionUID;
-		}*/
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+//    @OneToMany(mappedBy="article")
+//	public Collection<Reply> getReply() {
+//		return reply;
+//	}
+//
+//	public void setReply(Collection<Reply> reply) {
+//		this.reply = reply;
+//	}
+	
+	
+    
 }

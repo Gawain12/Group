@@ -55,7 +55,7 @@ public class ReplyController {
      * @param article_id
      * @return
      */
-    @RequestMapping(value = "/S_article/reply", method = RequestMethod.GET)  
+    @RequestMapping(value = "/reply", method = RequestMethod.POST)  
     @ResponseBody  
     public Map<String, Object> saveReply(@RequestParam String content,@RequestParam int article_id) {  
     	Map<String,Object> map=new HashMap<String,Object>(); 

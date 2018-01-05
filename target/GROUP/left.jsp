@@ -53,7 +53,8 @@ h1{font-size:15px;
         <span>文章管理</span>
         <a href="doPublish2"target="mainFrame" onFocus="this.blur()">编写文章</a>
         <a href="doCatagory?currPage=1"target="mainFrame" onFocus="this.blur()">管理分类</a>
-        <a href="doMarticle?currPage=1"target="mainFrame" onFocus="this.blur()">管理文章</a>
+        <a href="doMarticle?currPage=1"target="mainFrame" onFocus="this.blur()">我的文章</a>     
+        <a href="doAarticle?currPage=1"target="mainFrame" onFocus="this.blur()">所有文章</a>
       </div>
 
     </div>

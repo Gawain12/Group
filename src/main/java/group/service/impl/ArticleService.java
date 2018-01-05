@@ -25,7 +25,7 @@ public class ArticleService implements group.service.ArticleService {
 		// 封装当前页数
 		pageBean.setCurrPage(currPage);
 		// 封装每页记录数
-		int pageSize = 8;
+		int pageSize = 10;
 		pageBean.setPageSize(pageSize);
 		// 封装总记录数
 		int totalCount = articleDao.findCount();
@@ -68,6 +68,11 @@ public class ArticleService implements group.service.ArticleService {
 		articleDao.update(article);
 		
 	}
+	@Override
+	public List<Article> findByUserid(int userid) {
+		List<Article> list = articleDao.findByUserid(userid);
+		return list;
+	}
 	/**
 	 * 删除文章
 	 */
@@ -83,4 +88,10 @@ public class ArticleService implements group.service.ArticleService {
 	public void save(Article article) {
 		articleDao.save(article);
 	}
+	@Override
+	public void addArticle(Article article, int userid) {
+		this.articleDao.addArticle(article, userid);
+	}
+	
+	
 }

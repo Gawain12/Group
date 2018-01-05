@@ -18,9 +18,26 @@ public class User extends BaseEntity{
     private String password;
     private String email;
     private String phone;
- 
+    private String qq;
+    private String info;
 
-    @Id
+    public String getQq() {
+		return qq;
+	}
+
+	public void setQq(String qq) {
+		this.qq = qq;
+	}
+
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
+	}
+
+	@Id
     @GeneratedValue
     @Column(name = "userid", nullable = false)
     public int getUserid() {
@@ -40,7 +57,9 @@ public class User extends BaseEntity{
         this.username = username;
     }
 
-    @Basic
+
+
+	@Basic
     @Column(name = "password", nullable = false, length = 45)
     public String getPassword() {
         return password;

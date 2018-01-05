@@ -18,4 +18,10 @@ public interface ArticleService {
 	void delete(Article article);
 
 	void save(Article article);
+
+	List<Article> findByUserid(int userid);
+
+	void addArticle(Article article, int userid);
+
+	
 }

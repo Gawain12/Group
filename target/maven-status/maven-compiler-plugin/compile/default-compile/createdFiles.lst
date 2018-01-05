@@ -2,8 +2,10 @@ group\service\ScoreService.class
 group\service\impl\UserService.class
 group\service\ArticleTypeService.class
 group\entity\Score.class
+group\service\impl\AuthorityServiceImpl.class
 group\entity\Leader.class
 group\controller\LeaderController.class
+group\service\AuthorityService.class
 group\service\LeaderService.class
 group\entity\Group.class
 group\service\GroupService.class
@@ -41,6 +43,7 @@ group\dao\ArticleTypeDAO.class
 group\dao\MemberDAO.class
 group\dao\ScoreDAO.class
 group\util\PageBean.class
+group\entity\Authority.class
 group\dao\UserDao.class
 group\entity\BaseEntity.class
 group\controller\ArticleTypeController.class
@@ -48,8 +51,10 @@ group\service\ReplyService.class
 group\dao\impl\ArticleTypeDAO.class
 group\service\impl\LeaderService.class
 group\controller\ArticleController.class
+group\dao\AuthorityDao.class
 group\entity\Reply.class
 group\service\impl\ReplyService.class
 group\service\impl\LoginServlet.class
 group\dao\impl\LeaderDAO.class
 group\dao\impl\ArticleDAO.class
+group\dao\impl\AuthorityDaoImpl.class

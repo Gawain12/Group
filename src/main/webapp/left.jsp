@@ -46,14 +46,15 @@ h1{font-size:15px;
 	   <div class="collapsed">
         <span>分组管理</span>
         <a href="Myowngroup" target="mainFrame" onFocus="this.blur()">我的分组</a>
-        <a href="c_group.jsp" target="mainFrame" onFocus="this.blur()">创建分组</a>
-        <a href="GetAllGroup" target="mainFrame" onFocus="this.blur()">所有分组</a>
+        <a href="doPublishG" target="mainFrame" onFocus="this.blur()">创建分组</a>
+        <a href="GetAllGroup?currPage=1" target="mainFrame" onFocus="this.blur()">所有分组</a>
       </div>
 	   <div class="collapsed">
         <span>文章管理</span>
         <a href="doPublish2"target="mainFrame" onFocus="this.blur()">编写文章</a>
         <a href="doCatagory?currPage=1"target="mainFrame" onFocus="this.blur()">管理分类</a>
-        <a href="doMarticle?currPage=1"target="mainFrame" onFocus="this.blur()">管理文章</a>
+        <a href="doMarticle?currPage=1"target="mainFrame" onFocus="this.blur()">我的文章</a>     
+        <a href="doAarticle?currPage=1"target="mainFrame" onFocus="this.blur()">所有文章</a>
       </div>
 
     </div>

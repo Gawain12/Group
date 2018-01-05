@@ -2,6 +2,7 @@ F:\Workplace\GROUP\src\main\java\group\dao\ReplyDao.java
 F:\Workplace\GROUP\src\main\java\group\entity\Article.java
 F:\Workplace\GROUP\src\main\java\group\service\impl\LeaderService.java
 F:\Workplace\GROUP\src\main\java\group\dao\impl\ScoreDAO.java
+F:\Workplace\GROUP\src\main\java\group\dao\impl\AuthorityDaoImpl.java
 F:\Workplace\GROUP\src\main\java\group\dao\LeaderDAO.java
 F:\Workplace\GROUP\src\main\java\group\dao\ScoreDAO.java
 F:\Workplace\GROUP\src\main\java\group\entity\Group.java
@@ -9,6 +10,7 @@ F:\Workplace\GROUP\src\main\java\group\service\GroupService.java
 F:\Workplace\GROUP\src\main\java\group\controller\GroupController.java
 F:\Workplace\GROUP\src\main\java\group\dao\BaseDao.java
 F:\Workplace\GROUP\src\main\java\group\controller\LeaderController.java
+F:\Workplace\GROUP\src\main\java\group\dao\AuthorityDao.java
 F:\Workplace\GROUP\src\main\java\group\service\impl\ArticleTypeService.java
 F:\Workplace\GROUP\src\main\java\group\service\ArticleTypeService.java
 F:\Workplace\GROUP\src\main\java\group\dao\impl\MemberDAO.java
@@ -18,12 +20,15 @@ F:\Workplace\GROUP\src\main\java\group\entity\Member.java
 F:\Workplace\GROUP\src\main\java\group\dao\impl\LeaderDAO.java
 F:\Workplace\GROUP\src\main\java\group\controller\UserController.java
 F:\Workplace\GROUP\src\main\java\group\dao\impl\ReplyDao.java
+F:\Workplace\GROUP\src\main\java\group\service\AuthorityService.java
 F:\Workplace\GROUP\src\main\java\group\dao\MemberDAO.java
 F:\Workplace\GROUP\src\main\java\group\dao\impl\BaseDaoImpl.java
 F:\Workplace\GROUP\src\main\java\group\controller\ArticleTypeController.java
 F:\Workplace\GROUP\src\main\java\group\service\impl\ScoreService.java
+F:\Workplace\GROUP\src\main\java\group\entity\Authority.java
 F:\Workplace\GROUP\src\main\java\group\util\PageBean.java
 F:\Workplace\GROUP\src\main\java\group\service\impl\LoginServlet.java
+F:\Workplace\GROUP\src\main\java\group\service\impl\AuthorityServiceImpl.java
 F:\Workplace\GROUP\src\main\java\group\service\impl\RegisterServlet.java
 F:\Workplace\GROUP\src\main\java\group\entity\ArticleType.java
 F:\Workplace\GROUP\src\main\java\group\controller\ScoreController.java
