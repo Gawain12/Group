@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>主要内容区main</title>
+<title>main</title>
 <link href="style/css/css.css" type="text/css" rel="stylesheet" />
 <link href="style/css/main.css" type="text/css" rel="stylesheet" />
 <link rel="shortcut icon" href="style/images/main/favicon.ico" />
@@ -39,7 +39,7 @@ h1{font-size:20px;
   <tr>
   
     <td colspan="2" align="left" valign="top">
-    <h1>你好：<c:out value="${user.username}"/></h1>
+    <h1>你好：${username.username}</h1>
     
     </td>
   </tr>

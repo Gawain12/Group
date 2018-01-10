@@ -48,7 +48,8 @@
 	<!--<mvc:resources mapping="/img/**" location="/style/img/"/> -->
 
 	<mvc:resources mapping="/style/**" location="/style/" />
-	<mvc:default-servlet-handler />
+	
+
 	<!-- 配置LoginedInterceptor -->
 	<mvc:interceptors>
 		<mvc:interceptor>

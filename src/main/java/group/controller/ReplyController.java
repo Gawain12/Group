@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import group.entity.Article;
 import group.entity.Reply;
+import group.entity.User;
 import group.service.ArticleService;
 import group.service.ReplyService;
 import group.util.PageBean;
@@ -34,7 +36,7 @@ public class ReplyController {
     	PageBean<Reply> listReply = replyService.findAllReply(currPage);
     	// 值存储，绑定到request上
     	model.addAttribute("listReply",listReply);
-    	return "reply";
+    	return "/reply";
     }
     
     /**
@@ -42,11 +44,11 @@ public class ReplyController {
      * @param id
      * @return
      */
-    @RequestMapping(value="/deleteReply")
+    @RequestMapping(value="/deReply")
     public String delete(@RequestParam int id){
     	replyService.delete(id);
     	System.out.println("删除成功");
-    	return "redirect:/doReply?currPage=1";
+    	return "redirect:/doMarticle?currPage=1";
     }
     
     /**
@@ -55,9 +57,9 @@ public class ReplyController {
      * @param article_id
      * @return
      */
-    @RequestMapping(value = "/reply", method = RequestMethod.POST)  
-    @ResponseBody  
-    public Map<String, Object> saveReply(@RequestParam String content,@RequestParam int article_id) {  
+    @RequestMapping(value = "/reply", method = RequestMethod.GET)  
+    public String saveReply(@RequestParam String content,@RequestParam int article_id,HttpServletRequest request) {  
+    	try { 
     	Map<String,Object> map=new HashMap<String,Object>(); 
     	System.out.println("进入getReply");
     	// 创建reply对象
@@ -70,12 +72,18 @@ public class ReplyController {
         reply.setContent(content);
         reply.setTime(now);
         // 获取所评论文章
+    	User loginUser = (User) request.getSession().getAttribute("username");
         Article article = articleService.findById(article_id);
         reply.setArticle(article);
-    	replyService.save(reply);
+    	//replyService.save(reply);
+
+    	replyService.addReply(reply,loginUser.getUserid()); 
     	System.out.print("saveReply()执行成功");
     	map.put("reply", reply);
-      return map;  
+      return "/Authority";  
+    	  } catch (Exception e) {  
+              return "/Error";  
+           }   
     }
     
 }

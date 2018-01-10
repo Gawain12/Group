@@ -1,5 +1,7 @@
 package group.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 
@@ -36,6 +38,10 @@ public class UserService implements group.service.UserService{
 	@Override
 	public void updateUserPassword(User user) {
 		userDao.updateUserPassword(user);
+	}
+	@Override
+	public List<User> findAllUser() {
+		return userDao.findAll();
 	}
 	@Override
 	public User findUserByName(String userName) {

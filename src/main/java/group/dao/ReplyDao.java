@@ -16,4 +16,6 @@ public interface ReplyDao {
 
 	void save(Reply reply);
 
+	void addReply(Reply reply, int userid);
+
 }

@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import group.dao.ReplyDao;
+import group.entity.Article;
 import group.entity.Reply;
 import group.util.PageBean;
 
@@ -59,6 +60,10 @@ public class ReplyService implements group.service.ReplyService{
 		replyDao.save(reply);
 	}
 
-
+	@Override
+	public void addReply(Reply reply, int userid) {
+		this.replyDao.addReply(reply, userid);
+	}
+	
 
 }

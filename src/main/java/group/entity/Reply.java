@@ -21,8 +21,10 @@ public class Reply {
 	private String content;
     private Date time;
     private Article article;
+    private User user;
 	
-    @Id
+  
+	@Id
     @GeneratedValue
     public int getId() {
 		return id;
@@ -53,4 +55,13 @@ public class Reply {
 	public void setArticle(Article article) {
 		this.article = article;
 	}    
+
+@ManyToOne
+@JoinColumn(name="user_userid",referencedColumnName="userid")
+public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 }

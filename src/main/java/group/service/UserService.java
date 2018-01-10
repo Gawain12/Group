@@ -1,5 +1,7 @@
 package group.service;
 
+import java.util.List;
+
 import group.entity.User;
 
 public interface UserService {
@@ -15,4 +17,6 @@ public interface UserService {
 	void saveUser(User user);
 
 	void updateUserPassword(User user);
+
+	List<User> findAllUser();
 }

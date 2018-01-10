@@ -23,7 +23,7 @@ html{ SCROLLBAR-FACE-COLOR: #538ec6; SCROLLBAR-HIGHLIGHT-COLOR: #dce5f0; SCROLLB
  SCROLLBAR-3DLIGHT-COLOR: #dce5f0; SCROLLBAR-ARROW-COLOR: #2c6daa;  SCROLLBAR-TRACK-COLOR: #dce5f0;
    SCROLLBAR-DARKSHADOW-COLOR: #dce5f0; overflow-x:hidden;}
 body{overflow-x:hidden; background:url(style/images/main/leftbg.jpg) left top repeat-y #f2f0f5; width:194px;}
-h1{font-size:15px;
+h1{font-size:12px;
    color:white;
    text-shadow:0 0 8px;
    margin-top:6px;
@@ -34,7 +34,7 @@ h1{font-size:15px;
 <div id="left-top">
 	<div><img src="style/images/main/2.jpg" width="44" height="44" /></div>
     
-	<h1>Wellcome：<c:out value="${user.username}"/></h1>
+	<h1>Wellcome：<c:out value="${username.username}"/></h1>
             
 </div>
     <div style="float: left" id="my_menu" class="sdmenu">

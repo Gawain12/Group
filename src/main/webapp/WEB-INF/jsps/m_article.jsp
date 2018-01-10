@@ -48,18 +48,26 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
       </tr>
       
 					<tbody id="deleteItem">
+		<!--  					<form action="doAuthority" method="post">		-->
 	    <c:forEach items="${listArticle}" var="a">
 							<tr>
 								<td>${a.id}</td>
 								<td>${a.pubDate}</td>
 	<!--							<td>${a.articleType}</td> -->
-						<td><a href="articleShow/${a.id}">	${a.title}</a></td>
+						<td><a href="articleShow?articleId=${a.id}">	${a.title}</a></td>
 								<td><a href="doPublish?article_id=${a.id}">编辑</a> 
 								<a href="doDelete?article_id=${a.id}" class="deleteItem">删除</a>
 								
-								<a href="doDelete?article_id=${a.id}" >管理查看权限</a>
-								</td>
-							</tr>
+			<a href="articleShow?articleId=${a.id}" >管理权限</a>		
+     <!--  	       	<input type="hidden" name="article_id" value="${a.id}" id="article_id">
+							<select class="catid" name="userId">
+										<c:forEach items="${userList}" var="a">
+											<option value="${a.userid}">${a.username}</option>
+										</c:forEach>
+								</select>
+						<input class="article-btn-push" value="添加用户" type="submit"> 
+						
+						</form>   -->	
 						</c:forEach>
 	</tbody>
 

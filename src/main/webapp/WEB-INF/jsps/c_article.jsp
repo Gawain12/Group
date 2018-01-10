@@ -75,7 +75,7 @@ body{
 						<tbody>
 								<div class="main">
 								<tr class="tr">
-								<th><i class="require-red">*</i>分类：</th>
+								<th><i class="require-red"></i>分类：</th>
 								<td>
 									<select class="catid" name="articletype">
 										<c:forEach items="${typeList}" var="a">
@@ -93,14 +93,14 @@ body{
 		                     <br/>
 		                     </tr>
 		                         <tr class="tr">
-								<td><input class="article-btn-push" value="发布"
-									type="submit"> <input class="article-btn-back"
-									onclick="history.go(-1)" value="返回" type="button"></td>
+								<td><input class="article-btn-push" value="发布" type="submit"> 
+								<input class="article-btn-back" onclick="history.go(-1)" value="返回" type="button"></td>
 							</tr>
 						</tbody>
 					</table>
 				</form>
 			</div>
+		
 </body>
 <script src="<c:url value="/style/js/jquery-1.8.3.min.js"/>"></script>
 	<script src="<c:url value="/style/js/menu.js"/>"></script>

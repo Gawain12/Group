@@ -45,6 +45,8 @@ public class ArticleController {
 	private ReplyService replyService;
 	@Resource
 	private AuthorityService authorityService;
+	@Resource
+	private UserService userService;
 	
 	/**
 	 * 分页查询所有文章
@@ -53,7 +55,7 @@ public class ArticleController {
 	 * @return
 	 */
 	@RequestMapping(value = "/doMarticle")
-	public String findMyArticle(@RequestParam int currPage,HttpServletRequest req,Model model){ //
+	public String findMyArticle(@RequestParam int currPage,HttpServletRequest req,Model model,Article article){ //
 		if(currPage<1){
 		   	currPage = 1;
 		}
@@ -61,13 +63,19 @@ public class ArticleController {
 
 		User loginUser = (User) req.getSession().getAttribute("username");
 
+
+		List<User> userList = userService.findAllUser();
 		List<Article> listArticle = articleService.findByUserid(loginUser.getUserid());
 		//PageBean<Article> listArticle = articleService.findAll(currPage);
 		// 查询所有分类
+
 		List<ArticleType> typeList = articleTypeService.findAllType();
+	//	int article_id = Article.getId();
 		// 值存储，绑定到request上
 		model.addAttribute("listArticle", listArticle);
 		model.addAttribute("typeList", typeList);
+		model.addAttribute("userList", userList);
+	//	authorityService.addAuthority(article_id,loginUser.getUserid()); 
 		 //System.out.println(listArticle.getCurrPage()+":"+listArticle.getTotalCount()+":"+listArticle.getList().get(0).getContent());
 		return "/m_article";
 	}
@@ -80,9 +88,12 @@ public class ArticleController {
 		PageBean<Article> listArticle = articleService.findAll(currPage);
 		// 查询所有分类
 		List<ArticleType> typeList = articleTypeService.findAllType();
+
 		// 值存储，绑定到request上
 		model.addAttribute("listArticle", listArticle);
 		model.addAttribute("typeList", typeList);
+
+		
 		System.out.println(listArticle.getCurrPage()+":"+listArticle.getTotalCount()+":"+listArticle.getList().get(0).getContent());
 		return "/A_article";
 	}
@@ -104,6 +115,13 @@ public class ArticleController {
 		List<ArticleType> typeList = articleTypeService.findAllType();
 		map.put("typeList",typeList);
 		return "/U_article";
+	}
+	@RequestMapping(value = "/doAuthority")
+	public String addAthority(@RequestParam int article_id,@RequestParam int userId){
+		// 根据文章id查询
+
+    	authorityService.addAuthority(article_id,userId); 
+		return "/Authority";
 	}
 	/*
 @RequestMapping(value = "/wArticle", method = RequestMethod.POST)
@@ -195,6 +213,8 @@ public class ArticleController {
     	article.setPubDate(now);
     	article.setArticleType(at);
     	articleService.addArticle(article,loginUser.getUserid()); 
+
+    	
    // 	articleService.save(article);
     	return "redirect:doMarticle?currPage=1";
       } catch (Exception e) {  
@@ -203,22 +223,24 @@ public class ArticleController {
     }
  @RequestMapping(value = "/check", method = RequestMethod.GET)
     
-    public String getUserArticleCheck(@RequestParam int article_id, Model model, HttpServletRequest request,ModelMap map){
-    	System.out.println("所查文章的ID:" +article_id);
-		User loginUser = (User) request.getSession().getAttribute("username");
-    	int user_userid = loginUser.getUserid();
-    	System.out.println("当前用户的ID:" +user_userid);
-		Authority curAuthority =authorityService.Check(article_id, user_userid);
+    public String getUserArticleCheck(@RequestParam int articleId, Model model,  HttpSession httpSession,ModelMap map){
+    	System.out.println("所查文章的ID:" +articleId);
+		User loginUser = (User) httpSession.getAttribute("username");
+    	int userId = loginUser.getUserid();
+    	System.out.println("当前用户的ID:" +userId);
+		Authority curAuthority =authorityService.Check(articleId,userId);
     	if(curAuthority == null)
     	{
-    		return "Arterror";
+    		return "/AuError";
     	}else 
     	{
-    		List<Reply> listReply = replyService.findReply(article_id);
-      		
+    		List<Reply> listReply = replyService.findReply(articleId);
+
+    	
       		// 值存储，绑定到request上
       		map.put("listReply", listReply);
-        	model.addAttribute("article", articleService.findById(article_id));
+
+        	model.addAttribute("article", articleService.findById(articleId));
             return "/S_article";
     	}
 
@@ -241,18 +263,23 @@ public class ArticleController {
     /**
      * 异步请求articleShow
      */
-    @RequestMapping(value = "/articleShow/{id}")
-  	public String article(@PathVariable int id,ModelMap map){
-  		Article article = articleService.findById(id);
-  		List<Reply> listReply = replyService.findReply(id);
-  		System.out .println(article);
-  		System.out.println(listReply);
-  		// 值存储，绑定到request上
-  		map.put("article", article);
-  		map.put("listReply", listReply);
-  		System.out.println("articles請求成功");
-  		return "/S_article";
-  	}
+    @RequestMapping(value = "/articleShow",method = RequestMethod.GET)
+    
+  	public String article(Article article,@RequestParam int articleId,ModelMap map,Model model){
+    	System.out.println("所查文章的ID:" +articleId);
+		
+    		List<Reply> listReply = replyService.findReply(articleId);
+
+    		List<User> userList = userService.findAllUser();
+    	
+      		// 值存储，绑定到request上
+      		map.put("listReply", listReply);
+
+    		model.addAttribute("userList", userList);
+        	model.addAttribute("article", articleService.findById(articleId));
+            return "/S_article";
+    	}
+    }
 
 
-}
+
